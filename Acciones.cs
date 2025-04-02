@@ -17,9 +17,49 @@ namespace Gridview
             new Genero ("James Gun",2005,"B12","Romance","1h"),
         };
 
-        public List<Genero>mostrarG()
+        public List<Genero> mostrarG()
         {
             return Lgeneros;
+        }
+
+        public bool EliminarAnio(int anio)
+        {
+            try
+            {
+                var objetoeliminar = Lgeneros.Find(x => x.Anio == anio);
+                if (objetoeliminar != null)
+                {
+                    Lgeneros.Remove(objetoeliminar);
+                    return true;
+                }
+                return false;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+            }
+        }
+
+        public bool AgregarA(string director, int anio, string clasificacion, string género, string duracion)
+        {
+            try
+            {
+                var objetoagregar = Lgeneros.Find(x => x.Anio == anio);
+                if (objetoagregar != null)
+                {
+                    Lgeneros.Add(objetoagregar);
+                    return true;
+                }
+                return false;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+            }
         }
     }
 }

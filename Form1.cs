@@ -12,6 +12,7 @@ namespace Gridview
 {
     public partial class Form1 : Form
     {
+        Acciones acc = new Acciones();
         public Form1()
         {
             InitializeComponent();
@@ -24,10 +25,33 @@ namespace Gridview
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
-            Acciones acc = new Acciones();
-
+            DGdatos.DataSource = null;
             DGdatos.DataSource = acc.mostrarG();
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAnio_Click(object sender, EventArgs e)
+        {
+            if (acc.EliminarAnio(Convert.ToInt32(txbAnio.Text)))
+
+            {
+                MessageBox.Show("Eliminado con exito");
+            }
+            else
+            {
+                MessageBox.Show("Fallo al eliminar");
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+          
+    }
     }
 }
