@@ -50,8 +50,26 @@ namespace Gridview
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (acc.AgregarA(tbxDirector.Text, Convert.ToInt32(txbAnio.Text), tbxClasificacion.Text, tbxGenero.Text, tbxDuracion.Text))
+                MessageBox.Show("Agregado con exito");
 
-          
-    }
+            else
+                MessageBox.Show("Fallo al agregado");
+
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (acc.ActualizarG(tbxDirector.Text, Convert.ToInt32(txbAnio.Text), tbxClasificacion.Text, tbxGenero.Text, tbxDuracion.Text))
+            {
+                MessageBox.Show("Actualizado con éxito");
+                DGdatos.DataSource = null;
+                DGdatos.DataSource = acc.mostrarG();
+            }
+            else
+            {
+                MessageBox.Show("Fallo al actualizar");
+            }
+        }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Gridview
@@ -16,6 +19,8 @@ namespace Gridview
             new Genero ("James wan",2025,"D","Terror","2h 45min"),
             new Genero ("James Gun",2005,"B12","Romance","1h"),
         };
+
+        Genero g = new Genero();
 
         public List<Genero> mostrarG()
         {
@@ -46,19 +51,33 @@ namespace Gridview
         {
             try
             {
-                var objetoagregar = Lgeneros.Find(x => x.Anio == anio);
-                if (objetoagregar != null)
-                {
-                    Lgeneros.Add(objetoagregar);
-                    return true;
-                }
-                return false;
-
+                Lgeneros.Add(new Genero( g.Director= director, g.Anio = anio, g.Clasificacion = clasificacion, g.Género = género, g.Duracion= duracion));
+                return true;
             }
             catch (Exception)
             {
                 return false;
+            }
+        }
 
+        public bool ActualizarG(string director, int anio, string clasificacion, string género, string duracion)
+        {
+            try
+            {
+                var objetoActualizar = Lgeneros.Find(x => x.Anio == anio);
+                if (objetoActualizar != null)
+                {
+                    objetoActualizar.Director = director;
+                    objetoActualizar.Clasificacion = clasificacion;
+                    objetoActualizar.Género = género;
+                    objetoActualizar.Duracion = duracion;
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }
